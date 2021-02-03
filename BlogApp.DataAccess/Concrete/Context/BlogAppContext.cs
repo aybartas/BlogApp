@@ -1,4 +1,5 @@
-﻿using BlogApp.Entities.Concrete;
+﻿using BlogApp.DataAccess.Concrete.DatabaseMap;
+using BlogApp.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,17 @@ namespace BlogApp.DataAccess.Concrete.Context
         {
             optionsBuilder.UseSqlServer("server=TAS; database=BlogAppDb;integrated security=true");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AppUserMap());
+            modelBuilder.ApplyConfiguration(new BlogCategoryMap());
+            modelBuilder.ApplyConfiguration(new BlogMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
+            modelBuilder.ApplyConfiguration(new CommentMap());
+
+        }
+
 
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Blog> Blogs { get; set; }

@@ -11,10 +11,14 @@ namespace BlogApp.Entities.Concrete
         public string Title { get; set; }
         public int Definition { get; set; }
         public string Description { get; set; }
-        public DateTime PublishedTime { get; set; }
+        public DateTime PublishedTime { get; set; } = DateTime.Now;
         public string BlogImage { get; set; }
 
-        public List<BlogCategory> BlogCategories { get; set; }
+        public  int AuthorId { get; set; }
+        public AppUser AppUser { get; set; }
 
+        public List<Comment> Comments { get; set; }
+
+        public List<BlogCategory> BlogCategories { get; set; }
     }
 }

@@ -16,4 +16,5 @@ namespace BlogApp.Business.Interfaces
         Task Update(T entity);
         Task Delete(T entity);
     }
+
 }
