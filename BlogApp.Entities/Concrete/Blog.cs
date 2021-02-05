@@ -9,7 +9,7 @@ namespace BlogApp.Entities.Concrete
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public int Definition { get; set; }
+        public string Definition { get; set; }
         public string Description { get; set; }
         public DateTime PublishedTime { get; set; } = DateTime.Now;
         public string BlogImage { get; set; }

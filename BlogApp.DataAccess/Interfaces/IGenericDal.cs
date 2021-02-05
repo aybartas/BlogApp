@@ -1,4 +1,5 @@
-﻿using BlogApp.Entities.Interfaces;
+﻿using BlogApp.Entities.Concrete;
+using BlogApp.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -15,5 +16,12 @@ namespace BlogApp.DataAccess.Interfaces
         Task Create(T entity);
         Task Update(T entity);
         Task Delete(T entity);
+        Task<T> FindById(int id);
+
+        Task<List<T>> GetAllWithDescendingOrder<TKey>(Expression<Func<T, TKey>> keySelector);
+
+        Task<List<T>> GetAllWithFilterDescending<TKey>(Expression<Func<T, bool>> filter, Expression<Func<T, TKey>> keySelector);
+
+
     }
 }

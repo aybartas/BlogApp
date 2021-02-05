@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApp.Entities", "BlogApp.Entities\BlogApp.Entities.csproj", "{337F9FD5-FDDE-4793-B0B4-6A48AD15814D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApp.Entities", "BlogApp.Entities\BlogApp.Entities.csproj", "{337F9FD5-FDDE-4793-B0B4-6A48AD15814D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApp.DataAccess", "BlogApp.DataAccess\BlogApp.DataAccess.csproj", "{BF3F2443-CA25-4916-AF30-FA67DBCB5E26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApp.DataAccess", "BlogApp.DataAccess\BlogApp.DataAccess.csproj", "{BF3F2443-CA25-4916-AF30-FA67DBCB5E26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApp.Business", "BlogApp.Business\BlogApp.Business.csproj", "{01B6A670-4FD9-4B25-9141-3F78B2EF689D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApp.Business", "BlogApp.Business\BlogApp.Business.csproj", "{01B6A670-4FD9-4B25-9141-3F78B2EF689D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApp.WebAPI", "BlogApp.WebAPI\BlogApp.WebAPI.csproj", "{A849F1A8-EF3A-4F04-A0FB-8323A4EC3E2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{01B6A670-4FD9-4B25-9141-3F78B2EF689D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01B6A670-4FD9-4B25-9141-3F78B2EF689D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01B6A670-4FD9-4B25-9141-3F78B2EF689D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A849F1A8-EF3A-4F04-A0FB-8323A4EC3E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A849F1A8-EF3A-4F04-A0FB-8323A4EC3E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A849F1A8-EF3A-4F04-A0FB-8323A4EC3E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A849F1A8-EF3A-4F04-A0FB-8323A4EC3E2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

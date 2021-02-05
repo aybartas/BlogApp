@@ -21,12 +21,16 @@ namespace BlogApp.Business.Concrete
         public async Task Create(T entity)
         {
             await genericDal.Create(entity);
-
         }
 
         public async Task Delete(T entity)
         {
             await genericDal.Delete(entity);
+        }
+
+        public async Task<T> FindById(int id)
+        {
+           return await genericDal.FindById(id);
         }
 
         public async Task<List<T>> GetAll()
