@@ -22,8 +22,8 @@ namespace BlogApp.WebAPI.AutoMapper
             CreateMap<BlogCreateViewModel, Blog>();
             CreateMap<Blog, BlogCreateViewModel>();
 
-            CreateMap<BlogCreateViewModel, Blog>();
-            CreateMap<Blog, BlogCreateViewModel>();
+            CreateMap<BlogUpdateViewModel, Blog>();
+            CreateMap<Blog, BlogUpdateViewModel>();
 
             // CATEGORY 
             CreateMap<Category, CategoryCreateDTO>();

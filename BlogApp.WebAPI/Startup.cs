@@ -28,8 +28,11 @@ namespace BlogApp.WebAPI
         {
             services.AddAutoMapper(typeof(Startup));
             services.AddDependencies();
-            services.AddControllers();
 
+            // this configuration ignores internal server error caused by returning nested objects from API
+            services.AddControllers().AddNewtonsoftJson(options => {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,8 +43,10 @@ namespace BlogApp.WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            app.UseStaticFiles();
 
+            app.UseRouting();
+ 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
