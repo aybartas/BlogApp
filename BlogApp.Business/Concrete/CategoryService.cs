@@ -16,6 +16,5 @@ namespace BlogApp.Business.Concrete
         {
             this.genericDal = genericDal;
         }
-
     }
 }

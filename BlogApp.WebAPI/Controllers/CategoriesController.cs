@@ -36,7 +36,7 @@ namespace BlogApp.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetById(int id)
         {
-            var category = await categoryService.GetByFilter(I => I.Id == id);
+            var category = await categoryService.FindById(id);
 
             return Ok(mapper.Map<CategoryListDTO>(category));
         }
@@ -61,13 +61,13 @@ namespace BlogApp.WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-
             var categoryToDelete = await categoryService.FindById(id);
 
-            if (categoryToDelete == null) return BadRequest("The cagetory to be deleted doesn't exist in database");
-
+            if (categoryToDelete == null) {
+                return BadRequest("The cagetory to be deleted doesn't exist in database");
+            }
             await categoryService.Delete(new Category { Id = id });
-
+            
             return NoContent();
         }
     }

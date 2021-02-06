@@ -21,15 +21,12 @@ namespace BlogApp.DataAccess.Concrete.Context
             modelBuilder.ApplyConfiguration(new BlogMap());
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new CommentMap());
-
         }
-
 
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<Comment> Comments { get; set; }
-
     }
 }
