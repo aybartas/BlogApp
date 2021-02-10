@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BlogApp.Client.APIServices.Interface;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,20 @@ namespace BlogApp.Client.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IBlogApiService blogApiService;
+
+
+        public HomeController(IBlogApiService blogApiService)
         {
-            return View();
+            this.blogApiService = blogApiService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+
+            var blogs = await blogApiService.GetAll();
+
+            return View(blogs);
         }
     }
 }

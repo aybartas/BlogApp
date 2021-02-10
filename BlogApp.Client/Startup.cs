@@ -1,3 +1,5 @@
+using BlogApp.Client.APIServices.Concrete;
+using BlogApp.Client.APIServices.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +18,9 @@ namespace BlogApp.Client
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<IBlogApiService,BlogApiService>(); // when IBlogApiService is shown, create and assign BlogApiService instance and add HttpClient to BlogApiManager
+            services.AddHttpClient<ICategoryApiService, CategoryApiService>(); 
+
             services.AddControllersWithViews();
         }
 

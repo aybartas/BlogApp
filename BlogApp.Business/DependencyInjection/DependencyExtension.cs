@@ -21,10 +21,14 @@ namespace BlogApp.Business.DependencyInjection
 
             services.AddScoped<IBlogDal, BlogRepository>();
             services.AddScoped<IBlogService,BlogService>();
-          
+
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryDal, CategoryRepository>();
+
 
             services.AddScoped<IAppUserService, AppUserService>();
-            services.AddScoped<ICategoryService, CategoryService>();
+ 
+
             services.AddScoped<ICommentService, CommentService>();
             
 

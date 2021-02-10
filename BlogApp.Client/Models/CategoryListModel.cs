@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace BlogApp.Entities.DTO.CategoryDTO
+namespace BlogApp.Client.Models
 {
-    public class CategoryListDTO
+    public class CategoryListModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
