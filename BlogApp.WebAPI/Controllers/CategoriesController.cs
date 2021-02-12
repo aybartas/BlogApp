@@ -33,7 +33,7 @@ namespace BlogApp.WebAPI.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var category = await categoryService.FindById(id);
