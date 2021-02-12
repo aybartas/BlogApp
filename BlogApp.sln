@@ -11,9 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApp.Business", "BlogApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApp.WebAPI", "BlogApp.WebAPI\BlogApp.WebAPI.csproj", "{A849F1A8-EF3A-4F04-A0FB-8323A4EC3E2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApp.Client", "BlogApp.Client\BlogApp.Client.csproj", "{A7430FA7-F5AB-4256-8A9F-0FD841F98165}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApp.Tests", "BlogApp.Tests\BlogApp.Tests.csproj", "{5F07B4DF-2554-4B79-AD37-B00D6559A378}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApp.Tests", "BlogApp.Tests\BlogApp.Tests.csproj", "{5F07B4DF-2554-4B79-AD37-B00D6559A378}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{A849F1A8-EF3A-4F04-A0FB-8323A4EC3E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A849F1A8-EF3A-4F04-A0FB-8323A4EC3E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A849F1A8-EF3A-4F04-A0FB-8323A4EC3E2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7430FA7-F5AB-4256-8A9F-0FD841F98165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7430FA7-F5AB-4256-8A9F-0FD841F98165}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7430FA7-F5AB-4256-8A9F-0FD841F98165}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7430FA7-F5AB-4256-8A9F-0FD841F98165}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5F07B4DF-2554-4B79-AD37-B00D6559A378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5F07B4DF-2554-4B79-AD37-B00D6559A378}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F07B4DF-2554-4B79-AD37-B00D6559A378}.Release|Any CPU.ActiveCfg = Release|Any CPU
