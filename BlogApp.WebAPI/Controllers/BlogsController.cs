@@ -4,6 +4,7 @@ using BlogApp.Entities.Concrete;
 using BlogApp.Entities.DTO.BlogDTO;
 using BlogApp.WebAPI.Common.Enums;
 using BlogApp.WebAPI.ViewModels.BlogViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,6 +17,7 @@ namespace BlogApp.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class BlogsController : BaseController
     {
         private readonly IBlogService blogService;
@@ -31,8 +33,8 @@ namespace BlogApp.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var blogs = mapper.Map<List<BlogListDTO>>(await blogService.GetBlogsSortedByPublishedTime());
 
+            var blogs = mapper.Map<List<BlogListDTO>>(await blogService.GetBlogsSortedByPublishedTime());
             return Ok(blogs);  //201
         }
 
@@ -41,14 +43,12 @@ namespace BlogApp.WebAPI.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var blog = mapper.Map<Blog>(await blogService.FindById(id));
-
             return Ok(blog);
-
         }
 
         [HttpPost]
         [DisableRequestSizeLimit]
-
+        [Authorize]
         public async Task<IActionResult> Create([FromForm] BlogCreateViewModel blogModel)
         {
 
@@ -72,6 +72,8 @@ namespace BlogApp.WebAPI.Controllers
         }
         
         [HttpPut("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> Update(int id, [FromForm] BlogUpdateViewModel blogUpdateViewModel)
         {
             if (blogUpdateViewModel.Id != id) return BadRequest("Invalid blog id provided");  // 400 
@@ -109,6 +111,8 @@ namespace BlogApp.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> Delete(int id)
         {
 

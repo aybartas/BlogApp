@@ -2,6 +2,7 @@
 using BlogApp.Business.Interfaces;
 using BlogApp.Entities.Concrete;
 using BlogApp.Entities.DTO.CategoryDTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -42,6 +43,8 @@ namespace BlogApp.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
+
         public async Task<IActionResult> Create(CategoryCreateDTO categoryCreateDTO)
         {
              await categoryService.Create(mapper.Map<Category>(categoryCreateDTO));
@@ -51,6 +54,8 @@ namespace BlogApp.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> Update(int id ,CategoryCreateDTO categoryCreateDTO)
         {
             if (id != categoryCreateDTO.Id) return BadRequest("Category to update doesn't exist in database");
@@ -59,6 +64,8 @@ namespace BlogApp.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> Delete(int id)
         {
             var categoryToDelete = await categoryService.FindById(id);

@@ -1,5 +1,7 @@
 using AutoMapper;
 using BlogApp.Business.DependencyInjection;
+using BlogApp.Business.JwtConfig;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,9 +9,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BlogApp.WebAPI
@@ -29,6 +33,26 @@ namespace BlogApp.WebAPI
             services.AddAutoMapper(typeof(Startup));
             services.AddDependencies();
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer (option => {
+
+                    option.RequireHttpsMetadata = true;
+                    option.TokenValidationParameters = new TokenValidationParameters {
+
+                        ValidIssuer = JwtConfig.Issuer,
+                        ValidAudience = JwtConfig.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtConfig.SecurityKey)),
+
+                        ValidateLifetime = true,
+
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ClockSkew = TimeSpan.Zero
+                      
+                    };
+                            
+                });
+
             // this configuration ignores internal server error caused by returning nested objects from API
             services.AddControllers().AddNewtonsoftJson(options => {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -46,7 +70,9 @@ namespace BlogApp.WebAPI
             app.UseStaticFiles();
 
             app.UseRouting();
- 
+
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
