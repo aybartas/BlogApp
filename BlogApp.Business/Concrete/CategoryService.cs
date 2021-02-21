@@ -12,9 +12,18 @@ namespace BlogApp.Business.Concrete
     {
         readonly IGenericDal<Category> genericDal;
 
-        public CategoryService(IGenericDal<Category> genericDal): base(genericDal)
+        readonly ICategoryDal categoryDal;
+
+        public CategoryService(IGenericDal<Category> genericDal, ICategoryDal categoryDal) : base(genericDal)
         {
             this.genericDal = genericDal;
+            this.categoryDal = categoryDal;
+        }
+
+        public Task<List<Category>> GetAllWithBlogCategories()
+        {
+            return categoryDal.GetAllWithBlogs();
+
         }
     }
 }

@@ -49,5 +49,7 @@ namespace BlogApp.WebAPI.Controllers
             return Ok(new UserNameSurnameDto {Name = user.Name, Surname = user.Surname });
             
         }
+
+
     }
 }

@@ -77,5 +77,29 @@ namespace BlogApp.WebAPI.Controllers
             
             return NoContent();
         }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetBlogCount()
+        {
+            List<CategoryWithBlogCountDTO> categoryWithBlogCountDTOList = new List<CategoryWithBlogCountDTO>();
+
+            var categories =  await categoryService.GetAllWithBlogCategories();
+
+            categories.ForEach(category => {
+
+                CategoryWithBlogCountDTO categoryWithBlogDto = new CategoryWithBlogCountDTO();
+                categoryWithBlogDto.Category = category;
+                categoryWithBlogDto.BlogCount = category.BlogCategories.Count;
+
+                categoryWithBlogCountDTOList.Add(categoryWithBlogDto);
+
+            });
+
+            return Ok();
+
+
+        }
+
+
     }
 }

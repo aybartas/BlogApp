@@ -1,4 +1,5 @@
 ﻿using BlogApp.Entities.Concrete;
+using BlogApp.Entities.DTO.BlogDTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,5 +11,8 @@ namespace BlogApp.Business.Interfaces
     {
         Task<List<Blog>> GetBlogsSortedByPublishedTime();
 
+        Task RemoveCategoryFromBlog(BlogCategoryDto blogCategoryDto);
+
+        Task AddCategoryToBlog(BlogCategoryDto blogCategoryDto);
     }
 }

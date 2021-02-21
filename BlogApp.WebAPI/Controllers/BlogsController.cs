@@ -70,7 +70,31 @@ namespace BlogApp.WebAPI.Controllers
                 return BadRequest(uploadedModel.ErrorMessage);
             }
         }
-        
+
+        [HttpPost("[action]")]
+        [Authorize]
+
+        public async Task<IActionResult> AddCategory(BlogCategoryDto blogCategoryDto)
+        {
+            await blogService.AddCategoryToBlog(blogCategoryDto);
+
+            return Created("", blogCategoryDto);
+        }
+
+
+        [HttpDelete("[action]")]
+        [Authorize]
+
+        public async Task<IActionResult> RemoveCategory(BlogCategoryDto blogCategoryDto)
+        {
+            await blogService.RemoveCategoryFromBlog(new BlogCategoryDto {BlogId = blogCategoryDto.BlogId, CategoryId = blogCategoryDto.CategoryId });
+
+            return Created("", blogCategoryDto);
+        }
+
+
+
+
         [HttpPut("{id}")]
         [Authorize]
 
