@@ -1,6 +1,7 @@
 ﻿using BlogApp.Business.Interfaces;
 using BlogApp.Business.Utility.AuthUtility;
 using BlogApp.Entities.DTO.UserDTO;
+using BlogApp.WebAPI.AnnotationFilters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,7 @@ namespace BlogApp.WebAPI.Controllers
         }
 
         [HttpPost]
+        [ValidModel]
         public async Task<IActionResult> SignIn(UserLoginDTO userLoginDTO)
         {
             var attemptedUser =  await appUserService.CheckOutUser(userLoginDTO);

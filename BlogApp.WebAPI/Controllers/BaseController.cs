@@ -13,7 +13,6 @@ namespace BlogApp.WebAPI.Controllers
     [ApiController]
     public class BaseController : ControllerBase
     {
-
         public async Task<UploadViewModel>  UploadFile(IFormFile file, string fileType)
         {
 

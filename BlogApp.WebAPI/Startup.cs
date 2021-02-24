@@ -1,6 +1,7 @@
 using AutoMapper;
 using BlogApp.Business.DependencyInjection;
 using BlogApp.Business.JwtConfig;
+using BlogApp.WebAPI.AnnotationFilters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,7 @@ namespace BlogApp.WebAPI
         {
             services.AddAutoMapper(typeof(Startup));
             services.AddDependencies();
-
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer (option => {
 
@@ -57,6 +58,8 @@ namespace BlogApp.WebAPI
             services.AddControllers().AddNewtonsoftJson(options => {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
+
+            services.AddScoped(typeof(ValidateId<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

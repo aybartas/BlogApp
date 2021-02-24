@@ -2,6 +2,7 @@
 using BlogApp.Business.Interfaces;
 using BlogApp.Entities.Concrete;
 using BlogApp.Entities.DTO.CategoryDTO;
+using BlogApp.WebAPI.AnnotationFilters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,7 @@ namespace BlogApp.WebAPI.Controllers
 
 
         [HttpGet("{id}")]
+        [ServiceFilter(typeof(ValidateId<Category>))]
         public async Task<IActionResult> GetById(int id)
         {
             var category = await categoryService.FindById(id);
@@ -44,6 +46,7 @@ namespace BlogApp.WebAPI.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidModel]
 
         public async Task<IActionResult> Create(CategoryCreateDTO categoryCreateDTO)
         {
@@ -55,6 +58,8 @@ namespace BlogApp.WebAPI.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
+        [ValidModel]
+        [ServiceFilter(typeof(ValidateId<Category>))]
 
         public async Task<IActionResult> Update(int id ,CategoryCreateDTO categoryCreateDTO)
         {
@@ -65,7 +70,7 @@ namespace BlogApp.WebAPI.Controllers
 
         [HttpDelete("{id}")]
         [Authorize]
-
+        [ServiceFilter(typeof(ValidateId<Category>))]
         public async Task<IActionResult> Delete(int id)
         {
             var categoryToDelete = await categoryService.FindById(id);
@@ -97,9 +102,6 @@ namespace BlogApp.WebAPI.Controllers
 
             return Ok();
 
-
         }
-
-
     }
 }

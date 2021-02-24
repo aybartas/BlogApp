@@ -2,6 +2,7 @@
 using BlogApp.Business.Interfaces;
 using BlogApp.Entities.Concrete;
 using BlogApp.Entities.DTO.BlogDTO;
+using BlogApp.WebAPI.AnnotationFilters;
 using BlogApp.WebAPI.Common.Enums;
 using BlogApp.WebAPI.ViewModels.BlogViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -49,6 +50,7 @@ namespace BlogApp.WebAPI.Controllers
         [HttpPost]
         [DisableRequestSizeLimit]
         [Authorize]
+        [ValidModel]
         public async Task<IActionResult> Create([FromForm] BlogCreateViewModel blogModel)
         {
 
@@ -73,6 +75,7 @@ namespace BlogApp.WebAPI.Controllers
 
         [HttpPost("[action]")]
         [Authorize]
+        [ValidModel]
 
         public async Task<IActionResult> AddCategory(BlogCategoryDto blogCategoryDto)
         {
@@ -93,10 +96,9 @@ namespace BlogApp.WebAPI.Controllers
         }
 
 
-
-
         [HttpPut("{id}")]
         [Authorize]
+        [ValidModel]
 
         public async Task<IActionResult> Update(int id, [FromForm] BlogUpdateViewModel blogUpdateViewModel)
         {
