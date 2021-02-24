@@ -1,8 +1,13 @@
 ﻿using BlogApp.Business.Concrete;
 using BlogApp.Business.Interfaces;
 using BlogApp.Business.Utility.AuthUtility;
+using BlogApp.Business.Validation;
 using BlogApp.DataAccess.Concrete.Repositories;
 using BlogApp.DataAccess.Interfaces;
+using BlogApp.Entities.DTO.BlogDTO;
+using BlogApp.Entities.DTO.CategoryDTO;
+using BlogApp.Entities.DTO.UserDTO;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -38,6 +43,13 @@ namespace BlogApp.Business.DependencyInjection
 
             // JWT 
             services.AddScoped<IJwtService, JwtService>();
+
+            services.AddTransient<IValidator<UserLoginDTO>, UserLoginValidator>();
+            services.AddTransient<IValidator<CategoryCreateDTO>, CategoryCreateValidator>();
+            services.AddTransient<IValidator<BlogCategoryDto>, BlogCategoryValidator>();
+            services.AddTransient<IValidator<CategoryUpdateDTO>, CategoryUpdateValidator>();
+
+
 
 
         }

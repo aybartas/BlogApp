@@ -2,6 +2,7 @@ using AutoMapper;
 using BlogApp.Business.DependencyInjection;
 using BlogApp.Business.JwtConfig;
 using BlogApp.WebAPI.AnnotationFilters;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -57,7 +58,7 @@ namespace BlogApp.WebAPI
             // this configuration ignores internal server error caused by returning nested objects from API
             services.AddControllers().AddNewtonsoftJson(options => {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            });
+            }).AddFluentValidation() ;
 
             services.AddScoped(typeof(ValidateId<>));
         }
